@@ -30,5 +30,5 @@ echo enter your deedoo zjot line:
 echo -n "> "
 read line
 echo "deedoo $1 : $line"
-zjot new deedoo $1 : $line
+bch.zjot new deedoo $1 : $line
 echo --[$0 [$@]
