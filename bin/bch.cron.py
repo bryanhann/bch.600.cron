@@ -19,6 +19,7 @@ sys.path.insert(0, str(LIB) )
 import service as SERVICE
 import scripting as SCRIPTING
 import timing as TIMING
+import alarm as ALARM
 app = typer.Typer()
 
 @app.command()
@@ -36,8 +37,11 @@ def clear():
 
 @app.command()
 def alarm():
-    TIMING.do_alarm()
-    #SERVICE.do_alarm()
+    ALARM.do_alarm()
+
+@app.command()
+def codes():
+    ALARM.print_codes()
 
 @app.command()
 def answer(code):

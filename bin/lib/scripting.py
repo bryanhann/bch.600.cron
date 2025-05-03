@@ -3,8 +3,8 @@
 import os
 from pathlib import Path
 
-from constants import CROND
-
+from constants import ENV
+CROND = ENV.d_CROND
 
 def scripts():
     return sorted(list(CROND.glob('*')))
@@ -14,11 +14,13 @@ def matching_dt(dt):
     return [x for x in scripts() if hhmmss.startswith(x.name)]
 
 def do_script(time,cmd):
+    """Add a pending script"""
     NEWLINE = '\n'
+    cmd = cmd + NEWLINE
     script = CROND/time
-    script.touch()
-    script.write_text( script.read_text() + cmd + NEWLINE )
-    os.chmod(script, 0o777)
+    if script.exists():
+        cmd = script.read_text() + cmd
+    script.write_text( cmd )
 
 def answers():
     return filter( None,  map( answer4script, scripts() ))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+import tools.env_tools
+ENV = tools.env_tools.env('BCH_CRON')
 
-from pathlib import Path
+#CROND = ENV.d_CROND
 
-CROND=Path.home()/'CRON.d'
-
-CROND.is_dir() or CROND.mkdir()
+#ANSWERED = ENV.f_ANSWERED

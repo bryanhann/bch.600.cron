@@ -6,9 +6,6 @@ from pathlib import Path
 POISONPILL = Path.home()/'die'
 
 from util import say
-#def say(msg):
-#    try: os.system( f"say {msg}" )
-#    except: pass
 
 def _poisononpill_set( msg='poisoned' ):
     POISONPILL.write_text(msg)

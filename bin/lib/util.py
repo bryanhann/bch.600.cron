@@ -2,6 +2,7 @@
 
 import sys
 import os
+import time
 
 BACKSPACES = '\b' * 50
 SPACE = ' '
@@ -25,3 +26,16 @@ def announce(*args):
 def say(*args):
     msg = ' '.join(args)
     os.system( f'say {msg}' )
+
+
+def file_remove(file):
+    file.exists() and file.unlink()
+
+def msloop(sec=1):
+    factor = 1000
+    while True:
+        for ii in range(int(sec*factor)):
+            yield ii
+            time.sleep(1/factor)
+
+
