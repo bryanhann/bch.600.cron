@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+unpoison () {
+    [ -f ~/die ] && say removing poison
+    [ -f ~/die ] && rm ~/die
+}
+
+is_persistant () {
+    local flag=$1
+    rm ${flag} 2> /dev/null
+    sleep 0.2
+    [ -f ${flag} ] && return 0 || return 1
+}
+
+unpoison
+is_persistant ${BCH_CRON_f_SERVING} && echo already serving
+is_persistant ${BCH_CRON_f_SERVING} || bch.cron serve
+

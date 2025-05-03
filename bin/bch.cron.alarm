@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+echo ++[$0] [$*]
+echo To set an alarm at 21:22 -- alarm 21:22
+[ -z $1 ] && exit
+echo echo bch.cron alarm } ${BCH_CRON_d_CROND}/$1
+echo bch.cron alarm > ${BCH_CRON_d_CROND}/$1
+

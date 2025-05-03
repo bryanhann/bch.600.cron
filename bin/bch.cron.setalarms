@@ -1,0 +1,7 @@
+for hh in $(seq -w 0 23); do
+    for mm in 00 10 20 30 40 50; do
+        hhmm=$hh:$mm
+        bch.cron.alarm $hhmm
+    done
+done
+
