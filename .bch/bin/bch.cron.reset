@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+crond=${BCH_CRON_d_CROND}
+mkdir -p $crond
+[   -z $crond ] && echo crond not defined && exit
+[ ! -d $crond ] && echo crond not created && exit
+for pth in $(ls $crond/[0-9]*); do rm $pth; done
+for pth in $(ls $crond/answer.*); do rm $pth; done
+for pth in $(ls $crond/pending.*); do rm $pth; done
+
+bch.cron.setalarms
+bch.cron.serve
