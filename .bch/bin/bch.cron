@@ -1,1 +1,2 @@
+export PYTHONPATH=${BCH_CRON__root}/.bch/bin/lib
 uv run $0.py $@

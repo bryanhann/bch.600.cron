@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# Except for the arguement to the next line,
-# this should never change.
+export BCH_CRON__root=$(dirname $(dirname ${BASH_SOURCE[0]}))
 
 . $(dirname ${BASH_SOURCE[0]})/lib/__init__.sh BCH_CRON
+
+for pth in $(ls $(dirname ${BASH_SOURCE[0]})/bin/bch.*); do
+    [ ! -f $pth ] && continue
+    :::link::: $pth
+done
