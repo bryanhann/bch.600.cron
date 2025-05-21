@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-export BCH_CRON__root=$(dirname $(dirname ${BASH_SOURCE[0]}))
-
-. $(dirname ${BASH_SOURCE[0]})/lib/__init__.sh BCH_CRON
+__export () { export BCH_CRON_$1="$2"; }
+__export _root       $(dirname $(dirname ${BASH_SOURCE[0]}))
+__export d_CROND     /Users/bch/CRON.d
+__export f_ANSWERED  /Users/bch/CRON.d/alarm-is-answered
+__export f_SERVING   /Users/bch/CRON.d/serving
+unset __export
 
 for pth in $(ls ${BCH_CRON__root}/.bch.bin/bch.cron*); do
-    [ ! -f $pth ] && continue
     :::link::: $pth
 done
+
